@@ -59,8 +59,20 @@ def send_heartbeat_checkin(
     try:
         response = session.get(url, timeout=timeout)
         response.raise_for_status()
-    except requests.RequestException:
-        logger.warning("Could not send heartbeat checkin.", exc_info=True)
+    except requests.RequestException as exc:
+        if exc.response is not None and exc.response.status_code == 404:
+            logger.warning(
+                "Heartbeat with ID: %s and environment: %s was not found.",
+                heartbeat,
+                environment,
+            )
+        else:
+            logger.warning(
+                "Could not send heartbeat (%s:%s) checkin.",
+                heartbeat,
+                environment,
+                exc_info=True,
+            )
 
 
 Param = ParamSpec("Param")

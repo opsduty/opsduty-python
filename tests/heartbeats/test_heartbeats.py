@@ -1,3 +1,6 @@
+import logging
+from typing import Any
+
 import pytest
 from opsduty_client.heartbeats.heartbeats import (
     heartbeat_checkin,
@@ -83,3 +86,19 @@ def test_send_heartbeat_checkin(
     responses.add(responses.GET, url=url, status=202)
 
     send_heartbeat_checkin(heartbeat=heartbeat, environment=environment)
+
+
+def test_send_heartbeat_not_found(responses: RequestsMock, caplog: Any) -> None:
+    """Make sure the send_heartbeat_checkin method handles 404s."""
+
+    url = f"{settings.OPSDUTY_BASE_URL}/heartbeats/checkin/not-found/"
+
+    # The test will fail if we don't execute this request.
+    responses.add(responses.GET, url=url, status=404)
+
+    with caplog.at_level(logging.WARNING):
+        send_heartbeat_checkin(heartbeat="not-found", environment=None)
+
+    assert len(caplog.records) == 1
+    record = caplog.records[0]
+    assert "was not found." in record.message
