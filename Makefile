@@ -63,7 +63,7 @@ fix-ruff: .venv | $(BASE) ; $(info $(M) running ruff…) @ ## Run ruff fixer
 
 # Release
 .PHONY: release
-release: all ; $(info $(M) running release…) @ ## Run poetry release
+release: .venv | $(BASE) ; $(info $(M) running release…) @ ## Run poetry release
 	$Q cd $(BASE) && $(POETRY) publish --build --username=__token__ --password=$(PYPI_TOKEN)
 
 # Dependency management
