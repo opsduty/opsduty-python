@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "4c828d0d4a3a8e3adc57444b4153686058107075",
+  "include-v-in-tag": false,
+  "separate-pull-requests": true,
+  "prerelease": false,
+  "packages": {
+    ".": {
+      "component": "opsduty-python",
+      "bump-minor-pre-major": true,
+      "include-component-in-tag": false,
+      "release-type": "python"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+name: CI
+
+on: push
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  python-lint:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "Python lint: black"
+            target: black
+          - name: "Python lint: ruff"
+            target: ruff
+          - name: "Python lint: mypy"
+            target: mypy
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python project
+        uses: ./.github/actions/setup-python
+        with:
+          tool-versions-path: .tool-versions
+
+      - name: Run linter
+        run: make lint-${{ matrix.target }}
+
+  python-tests:
+    name: "Python tests: pytest"
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python project
+        uses: ./.github/actions/setup-python
+        with:
+          tool-versions-path: .tool-versions
+
+      - name: Run pytest
+        run: |
+          make test-pytest
