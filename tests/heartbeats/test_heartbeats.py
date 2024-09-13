@@ -102,3 +102,17 @@ def test_send_heartbeat_not_found(responses: RequestsMock, caplog: Any) -> None:
     assert len(caplog.records) == 1
     record = caplog.records[0]
     assert "was not found." in record.message
+
+
+def test_decorator_adds_flag() -> None:
+    """
+    Make sure the decorator adds a has_heartbeat_checkin flag on
+    the decorated function.
+    """
+
+    def f() -> None:
+        pass
+
+    func = heartbeat_checkin(heartbeat="", environment=None)(f)
+
+    assert func.has_heartbeat_checkin  # type: ignore
