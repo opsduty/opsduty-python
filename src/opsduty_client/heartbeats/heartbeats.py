@@ -107,6 +107,8 @@ def heartbeat_checkin(
 
             return result
 
+        inner.has_heartbeat_checkin = True  # type: ignore
+
         return inner
 
     return decorator
