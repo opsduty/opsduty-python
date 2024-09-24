@@ -1,6 +1,6 @@
 # opsduty-python
 
-> OpsDuty API client.
+> Command-line utility for interfacing with OpsDuty.
 
 ## Heartbeats
 
@@ -12,6 +12,10 @@ to configure your heartbeats.
 ### Alternative 1: Decorator
 
 ```python
+from opsduty_python.heartbeats.heartbeats import (
+    heartbeat_checkin,
+)
+
 @heartbeat_checkin(heartbeat="HBXXXX", environment="prod", enabled=True)
 def periodic_job():
     pass
@@ -20,6 +24,10 @@ def periodic_job():
 ### Alternative 2: Send heartbeat manually.
 
 ```python
+from opsduty_python.heartbeats.heartbeats import (
+    send_heartbeat_checkin,
+)
+
 def periodic_job():
     try:
         pass

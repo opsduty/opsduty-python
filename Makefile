@@ -1,4 +1,4 @@
-PACKAGE      	= opsduty_client
+PACKAGE      	= opsduty_python
 BASE  	     	= $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 POETRY      	= poetry
 

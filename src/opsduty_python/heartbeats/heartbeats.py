@@ -6,7 +6,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from opsduty_client.settings import settings
+from opsduty_python.settings import settings
 
 logger = getLogger(__name__)
 
@@ -43,7 +43,7 @@ def send_heartbeat_checkin(
     heartbeat: str,
     environment: str | None,
     timeout: float | tuple[float, float] | None = None,
-) -> None:
+) -> bool:
     """Send a heartbeat checkin to OpsDuty."""
 
     url = f"{settings.OPSDUTY_BASE_URL}/heartbeats/checkin/{heartbeat}/"
@@ -59,6 +59,8 @@ def send_heartbeat_checkin(
     try:
         response = session.get(url, timeout=timeout)
         response.raise_for_status()
+
+        return True
     except requests.RequestException as exc:
         if exc.response is not None and exc.response.status_code == 404:
             logger.warning(
@@ -73,6 +75,8 @@ def send_heartbeat_checkin(
                 environment,
                 exc_info=True,
             )
+
+    return False
 
 
 Param = ParamSpec("Param")

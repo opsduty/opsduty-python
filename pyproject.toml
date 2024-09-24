@@ -1,16 +1,22 @@
 [tool.poetry]
 name = "opsduty-python"
 version = "0.0.3"
-description = "OpsDuty API client."
+description = "Command-line utility for interfacing with OpsDuty."
 authors = ["Eirik Martiniussen Sylliaas <eirik@opsduty.io>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "opsduty_client", from = "src"}]
+packages = [{include = "opsduty_python", from = "src"}]
+
+[tool.poetry.scripts]
+opsduty = 'opsduty_python.cli.__main__:opsduty'
 
 [tool.poetry.dependencies]
 python = "^3.11"
+opsduty-client = "^0.0.2"
 requests = "^2.32.3"
 urllib3 = "^2.2.2"
+click = "^8.1.7"
+structlog = "^24.4.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
