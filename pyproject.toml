@@ -11,12 +11,12 @@ packages = [{include = "opsduty_python", from = "src"}]
 opsduty = 'opsduty_python.cli.__main__:opsduty'
 
 [tool.poetry.dependencies]
-python = "^3.11"
 opsduty-client = "^0.0.2"
-requests = "^2.32.3"
-urllib3 = "^2.2.2"
-click = "^8.1.7"
-structlog = "^24.4.0"
+python = ">=3.11,<3.13"
+requests = ">=2.32,<3"
+urllib3 = ">=2.2.2,<3"
+click = ">=8.1.7,<9"
+structlog = ">=24.4.0,<=25"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
