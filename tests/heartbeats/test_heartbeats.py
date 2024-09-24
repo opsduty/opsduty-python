@@ -2,12 +2,12 @@ import logging
 from typing import Any
 
 import pytest
-from opsduty_client.heartbeats.heartbeats import (
+from opsduty_python.heartbeats.heartbeats import (
     heartbeat_checkin,
     requests_retry_session,
     send_heartbeat_checkin,
 )
-from opsduty_client.settings import settings
+from opsduty_python.settings import settings
 from pytest_mock import MockerFixture
 from requests import Session
 from responses import RequestsMock
@@ -46,7 +46,7 @@ def test_heartbeat_checkin(
 ) -> None:
     """Make sure the decorator calls send_heartbeat_checkin when it should."""
 
-    mock = mocker.patch("opsduty_client.heartbeats.heartbeats.send_heartbeat_checkin")
+    mock = mocker.patch("opsduty_python.heartbeats.heartbeats.send_heartbeat_checkin")
 
     @heartbeat_checkin(heartbeat="test", environment=environment, enabled=enabled)
     def job() -> None:
