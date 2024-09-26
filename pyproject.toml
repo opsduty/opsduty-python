@@ -11,7 +11,7 @@ packages = [{include = "opsduty_python", from = "src"}]
 opsduty = 'opsduty_python.cli.__main__:opsduty'
 
 [tool.poetry.dependencies]
-opsduty-client = "^0.0.3a1"
+opsduty-client = "^0.0.3a2"
 python = ">=3.11,<3.13"
 requests = ">=2.32,<3"
 urllib3 = ">=2.2.2,<3"

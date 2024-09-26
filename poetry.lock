@@ -390,13 +390,13 @@ files = [
 
 [[package]]
 name = "opsduty-client"
-version = "0.0.3a1"
+version = "0.0.3a2"
 description = "A client library for accessing opsduty"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "opsduty_client-0.0.3a1-py3-none-any.whl", hash = "sha256:5ee3b91dabb6956b11f257253fce5abdbd50fdedeb184119c0b90fd08d2c027b"},
-    {file = "opsduty_client-0.0.3a1.tar.gz", hash = "sha256:850c5caca2dfab9611ee5482c401c811fbcfcbfee6a902006fdb99103254c75e"},
+    {file = "opsduty_client-0.0.3a2-py3-none-any.whl", hash = "sha256:bd06658f66f1931d8624bb049fa53ec11cd1651312891292e1642c708b5d37a1"},
+    {file = "opsduty_client-0.0.3a2.tar.gz", hash = "sha256:ba02911e02fc2fd8dee45cb5555605bde91aa2c4d7246e70fed19cddba8fef14"},
 ]
 
 [package.dependencies]
@@ -963,4 +963,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "b04cd4f02dcd5833bb425bc0ce91acca913f6399b7752b0a25840fc8ae5d42ec"
+content-hash = "d8d883428df5a74764feb27f9b7864da574d43f562e5e85de53a441221c6f284"
