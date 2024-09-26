@@ -16,6 +16,14 @@ from opsduty_python.settings import settings
 logger = structlog.get_logger()
 
 
+class ExitError(click.UsageError):
+    def __init__(
+        self, message: str, ctx: click.Context | None = None, exit_code: int = 1
+    ) -> None:
+        super().__init__(message, ctx)
+        self.exit_code = exit_code
+
+
 @click.command(help="Send a heartbeat checkin to OpsDuty.")
 @click.option(
     "--heartbeat-id",
@@ -51,6 +59,13 @@ logger = structlog.get_logger()
     envvar="ENV",
     show_envvar=True,
 )
+@click.option(
+    "--ignore-error",
+    type=bool,
+    help="Exit with exit code 0, even if the checkin failed.",
+    is_flag=True,
+    default=False,
+)
 @click.pass_context
 def checkin(
     ctx: click.Context,
@@ -59,6 +74,7 @@ def checkin(
     service_id: int | None,
     name: str | None,
     environment: str | None,
+    ignore_error: bool,
 ) -> None:
 
     if heartbeat_id:
@@ -73,7 +89,12 @@ def checkin(
         )
 
         if not success:
-            ctx.fail("Could not send heartbeat checkin to OpsDuty.")
+            exit_code = 0 if ignore_error else 1
+            raise ExitError(
+                "Could not send heartbeat checkin to OpsDuty.",
+                ctx=ctx,
+                exit_code=exit_code,
+            )
 
         return
 
@@ -95,8 +116,13 @@ def checkin(
             opsduty_api_v1_heartbeats_healthcheck_environment_checkin.sync_detailed(
                 client=client, service_id=service_id, name=name, environment=environment
             )
-        except (UnexpectedStatus, httpx.TimeoutException):
-            ctx.fail("Could not send heartbeat checkin to OpsDuty.")
+        except (UnexpectedStatus, httpx.TimeoutException) as exc:
+            exit_code = 0 if ignore_error else 1
+            raise ExitError(
+                "Could not send heartbeat checkin to OpsDuty.",
+                ctx=ctx,
+                exit_code=exit_code,
+            ) from exc
 
         return
 
