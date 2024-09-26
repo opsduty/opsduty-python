@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/opsduty/opsduty-python/compare/0.1.0...0.1.1) (2024-09-26)
+
+
+### Bug Fixes
+
+* Add --ignore-error flag to the checkin command ([#10](https://github.com/opsduty/opsduty-python/issues/10)) ([40892ea](https://github.com/opsduty/opsduty-python/commit/40892eadc4181444690d12f1f280019f4bb0c1c2))
+
 ## [0.1.0](https://github.com/opsduty/opsduty-python/compare/0.0.3...0.1.0) (2024-09-26)
 
 
