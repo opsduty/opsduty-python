@@ -1,6 +1,7 @@
 import click
 
 from opsduty_python.cli.cli_groups import LazyGroup
+from opsduty_python.settings import Settings, settings
 from opsduty_python.utils import logging
 
 # Give us nice and short help parameters, too
@@ -27,24 +28,53 @@ Command-line utility for interfacing with OpsDuty.
     show_default=True,
 )
 @click.option(
-    "--access-token",
-    default=None,
+    "--base-url",
+    type=str,
+    default=Settings.field_default("OPSDUTY_BASE_URL"),
     required=False,
+    help="Base URL for API requests to OpsDuty.",
+)
+@click.option(
+    "--timeout",
+    type=int,
+    default=Settings.field_default("REQUEST_TIMEOUT"),
+    required=True,
+    help="API request timeout to OpsDuty.",
+)
+@click.option(
+    "--access-token",
+    type=str,
+    default=Settings.field_default("ACCESS_TOKEN"),
+    required=False,
+    envvar="OPSDUTY_ACCESS_TOKEN",
+    show_envvar=True,
     help="Set the bearer token used to communicate with OpsDuty.",
 )
 @click.pass_context
 def opsduty(
-    ctx: click.Context, log_format: str, log_level: str, access_token: str
+    ctx: click.Context,
+    log_format: str,
+    log_level: str,
+    base_url: str,
+    timeout: int,
+    access_token: str,
 ) -> None:
     logging.configure_structlog(
         log_level=logging.LogLevel(log_level), log_format=logging.LogFormat(log_format)
     )
 
+    # Initialize settings
+    settings.OPSDUTY_BASE_URL = base_url
+    settings.REQUEST_TIMEOUT = timeout
+    settings.ACCESS_TOKEN = access_token
+
 
 @click.group(
     cls=LazyGroup,
     lazy_subcommands={
-        "checkin": "opsduty_python.cli.heartbeats.checkin",
+        "checkin": "opsduty_python.cli.heartbeats.checkin.checkin",
+        "import": "opsduty_python.cli.heartbeats.import._import",
+        "export": "opsduty_python.cli.heartbeats.export.export",
     },
     help="Commands for managing and monitoring heartbeats.",
 )
