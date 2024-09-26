@@ -1,6 +1,7 @@
 from typing import Any, Literal, overload
 
 import pydantic
+from httpx import Timeout
 from opsduty_client.client import AuthenticatedClient, Client
 
 
@@ -34,7 +35,7 @@ class Settings(pydantic.BaseModel):
                 return AuthenticatedClient(
                     base_url=self.OPSDUTY_BASE_URL,
                     token=self.ACCESS_TOKEN,
-                    timeout=self.REQUEST_TIMEOUT,
+                    timeout=Timeout(float(self.REQUEST_TIMEOUT)),
                     raise_on_unexpected_status=True,
                 )
             else:
@@ -42,7 +43,7 @@ class Settings(pydantic.BaseModel):
 
         return Client(
             base_url=self.OPSDUTY_BASE_URL,
-            timeout=self.REQUEST_TIMEOUT,
+            timeout=Timeout(float(self.REQUEST_TIMEOUT)),
             raise_on_unexpected_status=True,
         )
 
