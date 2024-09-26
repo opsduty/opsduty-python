@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.0](https://github.com/opsduty/opsduty-python/compare/0.0.3...0.1.0) (2024-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add cli application, and rename package to opsduty_python ([#6](https://github.com/opsduty/opsduty-python/issues/6))
+
+### Features
+
+* Add cli application, and rename package to opsduty_python ([#6](https://github.com/opsduty/opsduty-python/issues/6)) ([3f882cd](https://github.com/opsduty/opsduty-python/commit/3f882cd8ba71752ed22f48779fec8eb33f179385))
+* Add heartbeat checkin, import and export scripts ([#9](https://github.com/opsduty/opsduty-python/issues/9)) ([c5beb4c](https://github.com/opsduty/opsduty-python/commit/c5beb4ce91e29d90e45cf0a033faf452bff21042))
+
 ## [0.0.3](https://github.com/opsduty/opsduty-python/compare/0.0.2...0.0.3) (2024-09-13)
 
 
