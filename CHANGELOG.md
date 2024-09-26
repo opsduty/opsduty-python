@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/opsduty/opsduty-python/compare/0.1.1...0.1.2) (2024-09-26)
+
+
+### Bug Fixes
+
+* Allow use of an older pydantic version ([#12](https://github.com/opsduty/opsduty-python/issues/12)) ([1601906](https://github.com/opsduty/opsduty-python/commit/1601906e99ff144b950851381910fbc786e899b3))
+
 ## [0.1.1](https://github.com/opsduty/opsduty-python/compare/0.1.0...0.1.1) (2024-09-26)
 
 
