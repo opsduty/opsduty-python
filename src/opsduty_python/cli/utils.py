@@ -1,8 +1,10 @@
+from datetime import datetime, timedelta
 from enum import StrEnum
 from io import IOBase
 from typing import Literal, TextIO, TypeVar, overload
 
 import click
+import dateutil.parser as dt
 import pydantic
 from opsduty_client.client import AuthenticatedClient, Client
 from pydantic_yaml import parse_yaml_file_as, to_yaml_file
@@ -97,3 +99,41 @@ def parse_document(document: IOBase | TextIO, type: type[TDocument]) -> TDocumen
         type,
         document,  # type: ignore
     )
+
+
+#
+# DateTime utils
+#
+
+
+def first_day_of_month(any_day: datetime) -> datetime:
+    first = any_day.replace(day=1)
+    first_day_of_last_month = first - timedelta(days=1)
+    return first_day_of_last_month
+
+
+def last_day_of_month(any_day: datetime) -> datetime:
+    next_month = any_day.replace(day=28) + timedelta(days=4)
+    return next_month - timedelta(days=next_month.day)
+
+
+class Month(pydantic.BaseModel):
+    month: str
+    first_day: datetime
+    last_day: datetime
+
+
+def get_month_from_string(month: str) -> Month | None:
+    """
+    Util to structure lookup month in a certain format with easy accessible utils.
+    """
+
+    if len(month) != 7:
+        return None
+
+    day_in_month = dt.parse(month)
+    # first_day_of_month actually gets last day of last month.
+    first_day = first_day_of_month(day_in_month) + timedelta(days=1)
+    last_day = last_day_of_month(day_in_month)
+
+    return Month(month=month, first_day=first_day, last_day=last_day)
