@@ -82,8 +82,20 @@ def heartbeats() -> None:
     pass
 
 
+@click.group(
+    cls=LazyGroup,
+    lazy_subcommands={
+        "shifts": "opsduty_python.cli.schedules.shifts",
+    },
+    help="Commands for accesing schedules.",
+)
+def schedules() -> None:
+    pass
+
+
 # Add CLI groups.
 opsduty.add_command(heartbeats)
+opsduty.add_command(schedules)
 
 
 if __name__ == "__main__":
