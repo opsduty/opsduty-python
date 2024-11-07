@@ -60,7 +60,7 @@ def fetch_heartbeats(
         assert page
 
         has_next_page = page.page_info.has_next_page
-        cursor = page.page_info.end_cursor
+        cursor = page.page_info.end_cursor if page.page_info.end_cursor else None
 
         heartbeats.extend(page.items)
 
