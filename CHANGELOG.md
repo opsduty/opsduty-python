@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/opsduty/opsduty-python/compare/0.1.2...0.2.0) (2024-11-07)
+
+
+### Features
+
+* **cli:** Add command to list schedule shifts ([#14](https://github.com/opsduty/opsduty-python/issues/14)) ([d1c34a6](https://github.com/opsduty/opsduty-python/commit/d1c34a6c2507161fa9a44c80d191a020334c3d3d))
+
+
+### Bug Fixes
+
+* Bump opsduty-python ([#15](https://github.com/opsduty/opsduty-python/issues/15)) ([a3abd74](https://github.com/opsduty/opsduty-python/commit/a3abd74001f4d94fd8c1bd6e1fbe23732ecaeb2f))
+
 ## [0.1.2](https://github.com/opsduty/opsduty-python/compare/0.1.1...0.1.2) (2024-09-26)
 
 
