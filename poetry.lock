@@ -390,13 +390,13 @@ files = [
 
 [[package]]
 name = "opsduty-client"
-version = "0.0.3a2"
+version = "0.0.5"
 description = "A client library for accessing opsduty"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "opsduty_client-0.0.3a2-py3-none-any.whl", hash = "sha256:bd06658f66f1931d8624bb049fa53ec11cd1651312891292e1642c708b5d37a1"},
-    {file = "opsduty_client-0.0.3a2.tar.gz", hash = "sha256:ba02911e02fc2fd8dee45cb5555605bde91aa2c4d7246e70fed19cddba8fef14"},
+    {file = "opsduty_client-0.0.5-py3-none-any.whl", hash = "sha256:30bebfee8503dc5489563c42f5406a88701287790c2d58cab8f6600cc28d63bc"},
+    {file = "opsduty_client-0.0.5.tar.gz", hash = "sha256:9a995a16b25f4e1d9ce27e5cbd262ff4072e4452a51ff97a64972ba4c7e8b870"},
 ]
 
 [package.dependencies]
@@ -471,7 +471,10 @@ files = [
 [package.dependencies]
 annotated-types = ">=0.6.0"
 pydantic-core = "2.23.4"
-typing-extensions = {version = ">=4.6.1", markers = "python_version < \"3.13\""}
+typing-extensions = [
+    {version = ">=4.12.2", markers = "python_version >= \"3.13\""},
+    {version = ">=4.6.1", markers = "python_version < \"3.13\""},
+]
 
 [package.extras]
 email = ["email-validator (>=2.0.0)"]
@@ -962,5 +965,5 @@ type = ["pytest-mypy"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.11,<3.13"
-content-hash = "8a9f9f77fb75de5f9dafab6da347b2853e88432bf2ea6b8cb4390a0772d96cc4"
+python-versions = ">=3.11,<3.14"
+content-hash = "96f64e7b115f3149f25dcbfb8d471d076df45f671e7f34f4d44bda919843a77a"
