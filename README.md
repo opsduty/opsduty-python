@@ -2,7 +2,7 @@
 
 > Command-line utility for interfacing with OpsDuty.
 
-The `opsduty-python` is built with two core features in mind:
+The `opsduty-python` library is built with two core features in mind:
 
 - Command-line interface to interact with OpsDuty
 - Programatic way to report heartbeat checkins in Python
@@ -13,7 +13,8 @@ See the [documentation](https://docs.opsduty.io/cli/) for more details.
 
 ## CLI
 
-The `opsduty-python` package contains a CLI that can be used to interact with OpsDuty.
+The `opsduty-python` package contains a CLI that can be used to interact with
+OpsDuty.
 
 The preferred way to install the CLI is to use `pipx install opsduty-python`.
 
@@ -43,10 +44,9 @@ Commands:
 
 ## Heartbeats
 
-Send periodic heartbeats to OpsDuty using `opsduty-python`. The
-heartbeat needs to be configured in OpsDuty before check-ins can
-be observed. Head over to [https://opsduty.io](https://opsduty.io)
-to configure your heartbeats.
+Send periodic heartbeats to OpsDuty using `opsduty-python`. The heartbeat needs
+to be configured in OpsDuty before check-ins can be observed. Head over to
+[https://opsduty.io](https://opsduty.io) to configure your heartbeats.
 
 ### Installation
 
