@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/opsduty/opsduty-python/compare/0.2.0...0.2.1) (2025-01-27)
+
+
+### Bug Fixes
+
+* Bump structlog version requirement to * ([#20](https://github.com/opsduty/opsduty-python/issues/20)) ([b4443d1](https://github.com/opsduty/opsduty-python/commit/b4443d1a2ad541264439cb0cc45e58d1ff3d86ba))
+
 ## [0.2.0](https://github.com/opsduty/opsduty-python/compare/0.1.2...0.2.0) (2024-11-07)
 
 
