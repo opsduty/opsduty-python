@@ -11,10 +11,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: "Python lint: black"
-            target: black
           - name: "Python lint: ruff"
             target: ruff
+          - name: "Python lint: ruff-format"
+            target: ruff-format
           - name: "Python lint: mypy"
             target: mypy
     name: ${{ matrix.name }}

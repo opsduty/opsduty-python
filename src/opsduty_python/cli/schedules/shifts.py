@@ -1,8 +1,8 @@
 import sys
+from zoneinfo import ZoneInfo
 
 import click
 from opsduty_client.api.schedules import opsduty_api_v1_schedules_list_schedule_shifts
-from zoneinfo import ZoneInfo
 
 from opsduty_python.cli.utils import (
     FILE_FORMATS,
@@ -18,7 +18,10 @@ from .records import ScheduleShifts
 @click.command(help="List shifts in time period.")
 @click.option(
     "--month",
-    help="Specify month (YYYY-MM), default is current month, which is paid out next month",
+    help=(
+        "Specify month (YYYY-MM), default is current month, "
+        "which is paid out next month."
+    ),
     type=str,
     required=True,
 )
