@@ -2,16 +2,17 @@ import logging
 from typing import Any
 
 import pytest
+from pytest_mock import MockerFixture
+from requests import Session
+from responses import RequestsMock
+from urllib3.util.retry import Retry
+
 from opsduty_python.heartbeats.heartbeats import (
     heartbeat_checkin,
     requests_retry_session,
     send_heartbeat_checkin,
 )
 from opsduty_python.settings import settings
-from pytest_mock import MockerFixture
-from requests import Session
-from responses import RequestsMock
-from urllib3.util.retry import Retry
 
 
 def test_requests_retry_session() -> None:
@@ -29,7 +30,7 @@ def test_requests_retry_session() -> None:
     )
 
     https_adapter = session.adapters["https://"]
-    retry: Retry = https_adapter.max_retries
+    retry: Retry = https_adapter.max_retries  # type: ignore
 
     assert retry.total == retries
     assert retry.connect == retries

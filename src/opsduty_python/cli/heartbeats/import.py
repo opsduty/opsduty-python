@@ -41,19 +41,28 @@ logger = get_logger()
     "-f",
     type=click.File(mode="r"),
     required=True,
-    help="Heartbeat definition file to import. This file should be on the same format as the export command use.",
+    help=(
+        "Heartbeat definition file to import. This file should be on the same "
+        "format as the export command use."
+    ),
 )
 @click.option(
     "--remove-unknown-heartbeats/--keep-unknown-heartbeats",
     type=bool,
-    help="Remove any heartbeats or heartbeat states that is not defined in the input document.",
+    help=(
+        "Remove any heartbeats or heartbeat states that is not defined "
+        "in the input document."
+    ),
     is_flag=True,
     default=False,
 )
 @click.option(
     "--confirm",
     type=bool,
-    help="The confirm flag is required when the script wants to delete configuration in OpsDuty.",
+    help=(
+        "The confirm flag is required when the script wants "
+        "to delete configuration in OpsDuty."
+    ),
     is_flag=True,
     default=False,
 )
@@ -89,7 +98,8 @@ def _import(
     )
 
     logger.info(
-        f"Matched {len(matched_heartbeats)} existing heartbeats, found {len(new_heartbeats)} new heartbeats."
+        f"Matched {len(matched_heartbeats)} existing heartbeats, "
+        f"found {len(new_heartbeats)} new heartbeats."
     )
     if unknown_heartbeats:
         logger.warning(
@@ -251,7 +261,7 @@ def _create_heartbeat_states(
                 body=CreateHeartbeatStateInput(
                     heartbeat_id=heartbeat_id,
                     environment=heartbeat_state.environment,
-                    type=HeartbeatType(heartbeat_state.type),
+                    type_=HeartbeatType(heartbeat_state.type),
                     cron_expression=heartbeat_state.cron_expression,
                     cron_timezone=heartbeat_state.cron_timezone,
                     interval_seconds=heartbeat_state.interval_seconds,
@@ -303,7 +313,8 @@ def _update_heartbeat_states(
 
         if changed:
             logger.info(
-                f"Updating heartbeat state {existing_heartbeat_state.environment} ({existing_heartbeat_state.id})"
+                f"Updating heartbeat state {existing_heartbeat_state.environment} "
+                f"({existing_heartbeat_state.id})"
             )
 
             if not dry_run:
@@ -311,7 +322,7 @@ def _update_heartbeat_states(
                     heartbeat_state_id=existing_heartbeat_state.id,
                     client=client,
                     body=UpdateHeartbeatStateInput(
-                        type=HeartbeatType(expected_heartbeat_state.type),
+                        type_=HeartbeatType(expected_heartbeat_state.type),
                         cron_expression=expected_heartbeat_state.cron_expression,
                         cron_timezone=expected_heartbeat_state.cron_timezone,
                         interval_seconds=expected_heartbeat_state.interval_seconds,
@@ -339,7 +350,8 @@ def _remove_unknown_heartbeat_states(
             continue
 
         logger.info(
-            f"Removing unknown heartbeat state {heartbeat_state.environment} ({heartbeat_state.id})"
+            f"Removing unknown heartbeat state {heartbeat_state.environment} "
+            f"({heartbeat_state.id})"
         )
 
         if not dry_run:
@@ -411,7 +423,8 @@ def _update_heartbeats(
 
         if changed:
             logger.info(
-                f"Updating heartbeat {existing_heartbeat.name} ({existing_heartbeat.id})"
+                f"Updating heartbeat {existing_heartbeat.name} "
+                f"({existing_heartbeat.id})"
             )
 
             if not dry_run:
@@ -433,11 +446,13 @@ def _update_heartbeats(
         )
 
         logger.info(
-            f"Matched {len(matched_heartbeat_states)} existing heartbeat states, found {len(new_heartbeat_states)} new heartbeat states."
+            f"Matched {len(matched_heartbeat_states)} existing heartbeat states, "
+            f"found {len(new_heartbeat_states)} new heartbeat states."
         )
         if unknown_heartbeat_states:
             logger.warning(
-                f"{len(unknown_heartbeat_states)} unknown heartbeat states exists in OpsDuty."
+                f"{len(unknown_heartbeat_states)} unknown "
+                f"heartbeat states exists in OpsDuty."
             )
 
         # Create new heartbeats

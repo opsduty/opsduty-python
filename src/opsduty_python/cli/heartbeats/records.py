@@ -44,7 +44,7 @@ class HeartbeatState(pydantic.BaseModel):
         return cls(
             id=raise_on_unset(heartbeat.id),
             environment=raise_on_unset(heartbeat.environment),
-            type=raise_on_unset(heartbeat.type),
+            type=raise_on_unset(heartbeat.type_),
             muted=raise_on_unset(heartbeat.muted),
             resolve_incident=raise_on_unset(heartbeat.resolve_incident),
             timeout_seconds=raise_on_unset(heartbeat.timeout_seconds),
@@ -52,19 +52,22 @@ class HeartbeatState(pydantic.BaseModel):
             interval_seconds=raise_on_unset(
                 (
                     heartbeat.interval_seconds
-                    if heartbeat.type == IntervalHeartbeatStateSchemaType.INTERVAL
+                    if heartbeat.type_ == IntervalHeartbeatStateSchemaType.INTERVAL
+                    and isinstance(heartbeat, IntervalHeartbeatStateSchema)
                     else None
                 )
             ),
             # Cron
             cron_expression=raise_on_unset(
                 heartbeat.cron_expression
-                if heartbeat.type == CronHeartbeatStateSchemaType.CRON
+                if heartbeat.type_ == CronHeartbeatStateSchemaType.CRON
+                and isinstance(heartbeat, CronHeartbeatStateSchema)
                 else None
             ),
             cron_timezone=raise_on_unset(
                 heartbeat.cron_timezone
-                if heartbeat.type == CronHeartbeatStateSchemaType.CRON
+                if heartbeat.type_ == CronHeartbeatStateSchemaType.CRON
+                and isinstance(heartbeat, CronHeartbeatStateSchema)
                 else None
             ),
         )

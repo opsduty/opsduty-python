@@ -29,7 +29,7 @@ class ExitError(click.UsageError):
     "--heartbeat-id",
     type=str,
     envvar="HEARTBEAT_ID",
-    help="Heartbeat ID of the heartbeat you want to checkin. ",
+    help="Heartbeat ID of the heartbeat you want to checkin.",
     cls=Mutex,
     not_required_if=["service_id", "name"],
 )
@@ -37,7 +37,10 @@ class ExitError(click.UsageError):
     "--service-id",
     type=int,
     envvar="SERVICE_ID",
-    help="Use service id and name to lookup heartbeat instead of the heartbeat id. Authentication required. ",
+    help=(
+        "Use service id and name to lookup heartbeat instead of the "
+        "heartbeat id. Authentication required."
+    ),
     cls=Mutex,
     not_required_if=["heartbeat_id"],
 )
@@ -45,7 +48,10 @@ class ExitError(click.UsageError):
     "--name",
     type=str,
     envvar="NAME",
-    help="Use service id and name to lookup heartbeat instead of the heartbeat id. Authentication required. ",
+    help=(
+        "Use service id and name to lookup heartbeat instead of the "
+        "heartbeat id. Authentication required."
+    ),
     cls=Mutex,
     not_required_if=["heartbeat_id"],
 )
@@ -55,7 +61,10 @@ class ExitError(click.UsageError):
     type=str,
     required=False,
     default=None,
-    help="Specify the environment for the heartbeat (e.g., production, staging, development).",
+    help=(
+        "Specify the environment for the heartbeat "
+        "(e.g., production, staging, development)."
+    ),
     envvar="ENV",
     show_envvar=True,
 )
@@ -76,7 +85,6 @@ def checkin(
     environment: str | None,
     ignore_error: bool,
 ) -> None:
-
     if heartbeat_id:
         logger.debug(
             "Sending heartbeat checkin", heartbeat=heartbeat_id, environment=environment
@@ -127,5 +135,6 @@ def checkin(
         return
 
     ctx.fail(
-        "Either --hearbeat-id or --service-id and --name is required to lookup heartbeat."
+        "Either --heartbeat-id or --service-id and --name is required "
+        "to lookup heartbeat."
     )
