@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/opsduty/opsduty-python/compare/0.2.1...0.2.2) (2025-02-20)
+
+
+### Bug Fixes
+
+* Bump dependencies ([#22](https://github.com/opsduty/opsduty-python/issues/22)) ([eb84c60](https://github.com/opsduty/opsduty-python/commit/eb84c6016226bfa6956c8d55fcae0f100404490e))
+
 ## [0.2.1](https://github.com/opsduty/opsduty-python/compare/0.2.0...0.2.1) (2025-01-27)
 
 
