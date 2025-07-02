@@ -2,15 +2,9 @@ from typing import TypeVar
 
 import pydantic
 from opsduty_client.models.cron_heartbeat_state_schema import CronHeartbeatStateSchema
-from opsduty_client.models.cron_heartbeat_state_schema_type import (
-    CronHeartbeatStateSchemaType,
-)
 from opsduty_client.models.heartbeat_schema import HeartbeatSchema
 from opsduty_client.models.interval_heartbeat_state_schema import (
     IntervalHeartbeatStateSchema,
-)
-from opsduty_client.models.interval_heartbeat_state_schema_type import (
-    IntervalHeartbeatStateSchemaType,
 )
 from opsduty_client.types import Unset
 
@@ -52,7 +46,7 @@ class HeartbeatState(pydantic.BaseModel):
             interval_seconds=raise_on_unset(
                 (
                     heartbeat.interval_seconds
-                    if heartbeat.type_ == IntervalHeartbeatStateSchemaType.INTERVAL
+                    if heartbeat.type_ == "interval"
                     and isinstance(heartbeat, IntervalHeartbeatStateSchema)
                     else None
                 )
@@ -60,13 +54,13 @@ class HeartbeatState(pydantic.BaseModel):
             # Cron
             cron_expression=raise_on_unset(
                 heartbeat.cron_expression
-                if heartbeat.type_ == CronHeartbeatStateSchemaType.CRON
+                if heartbeat.type_ == "cron"
                 and isinstance(heartbeat, CronHeartbeatStateSchema)
                 else None
             ),
             cron_timezone=raise_on_unset(
                 heartbeat.cron_timezone
-                if heartbeat.type_ == CronHeartbeatStateSchemaType.CRON
+                if heartbeat.type_ == "cron"
                 and isinstance(heartbeat, CronHeartbeatStateSchema)
                 else None
             ),
