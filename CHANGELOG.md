@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/opsduty/opsduty-python/compare/0.2.2...0.2.3) (2025-07-02)
+
+
+### Bug Fixes
+
+* Fix import issues in heartbeat logic, and test command invoke ([#24](https://github.com/opsduty/opsduty-python/issues/24)) ([8371219](https://github.com/opsduty/opsduty-python/commit/83712194398c5654217dc64b3d4c28ae9b3d2f56))
+
 ## [0.2.2](https://github.com/opsduty/opsduty-python/compare/0.2.1...0.2.2) (2025-02-20)
 
 
