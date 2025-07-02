@@ -6,7 +6,7 @@ from opsduty_python.cli.__main__ import opsduty
 def test_invoke_cli_without_args_or_commands() -> None:
     runner = CliRunner()
     result = runner.invoke(opsduty)
-    assert result.exit_code == 0
+    assert result.exit_code == 2
 
     assert "Usage: opsduty" in result.output
     assert "Options:" in result.output
