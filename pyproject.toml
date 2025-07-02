@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "opsduty-python"
-version = "0.2.2"
+version = "0.2.3"
 description = "Command-line utility for interfacing with OpsDuty."
 authors = ["Eirik Martiniussen Sylliaas <eirik@opsduty.io>"]
 license = "MIT"
