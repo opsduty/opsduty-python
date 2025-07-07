@@ -114,6 +114,7 @@ def test_decorator_adds_flag() -> None:
     def f() -> None:
         pass
 
-    func = heartbeat_checkin(heartbeat="", environment=None)(f)
+    func = heartbeat_checkin(heartbeat="HB001", environment=None)(f)
 
     assert func.has_heartbeat_checkin  # type: ignore
+    assert func.heartbeat == "HB001"  # type: ignore
