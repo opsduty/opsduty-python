@@ -112,6 +112,7 @@ def heartbeat_checkin(
             return result
 
         inner.has_heartbeat_checkin = True  # type: ignore
+        inner.heartbeat = heartbeat  # type: ignore
 
         return inner
 
