@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/opsduty/opsduty-python/compare/0.2.3...0.2.4) (2025-07-07)
+
+
+### Bug Fixes
+
+* Add heartbeat flag to decorated function ([#27](https://github.com/opsduty/opsduty-python/issues/27)) ([0fce90b](https://github.com/opsduty/opsduty-python/commit/0fce90b8687ab08b7cc5f8c64ee778276b108b3e))
+
 ## [0.2.3](https://github.com/opsduty/opsduty-python/compare/0.2.2...0.2.3) (2025-07-02)
 
 
