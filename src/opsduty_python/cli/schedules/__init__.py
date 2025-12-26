@@ -8,7 +8,7 @@ from opsduty_python.cli.cli_groups import LazyGroup
     lazy_subcommands={
         "list": "opsduty_python.cli.schedules.shifts.list",
     },
-    help="Commands for accesing shifts in a schedule.",
+    help="Commands for accessing shifts in a schedule.",
 )
 @click.option(
     "--schedule-id",

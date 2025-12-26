@@ -5,7 +5,7 @@
 The `opsduty-python` library is built with two core features in mind:
 
 - Command-line interface to interact with OpsDuty
-- Programatic way to report heartbeat checkins in Python
+- Programmatic way to report heartbeat checkins in Python
 
 ## Help
 
@@ -37,7 +37,7 @@ Options:
 
 Commands:
   heartbeats  Commands for managing and monitoring heartbeats.
-  schedules   Commands for accesing schedules.
+  schedules   Commands for accessing schedules.
 
   Command-line utility for interfacing with OpsDuty.
 ```

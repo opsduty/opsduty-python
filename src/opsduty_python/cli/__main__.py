@@ -87,7 +87,7 @@ def heartbeats() -> None:
     lazy_subcommands={
         "shifts": "opsduty_python.cli.schedules.shifts",
     },
-    help="Commands for accesing schedules.",
+    help="Commands for accessing schedules.",
 )
 def schedules() -> None:
     pass
