@@ -33,7 +33,7 @@ def get_client(
 ) -> AuthenticatedClient | Client | None:
     """
     Get API client in a safe way. This method causes the command to fail
-    if the access token is requires, but no token was provided.
+    if the access token is required, but no token was provided.
     """
 
     client = settings.get_client(require_authentication=require_authentication)
