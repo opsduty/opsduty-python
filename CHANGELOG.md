@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/opsduty/opsduty-python/compare/0.2.4...0.2.5) (2026-03-27)
+
+
+### Bug Fixes
+
+* Support python 3.14 ([#30](https://github.com/opsduty/opsduty-python/issues/30)) ([bc434d7](https://github.com/opsduty/opsduty-python/commit/bc434d706b202a6e5bef575ff63e45af72feb0dc))
+
 ## [0.2.4](https://github.com/opsduty/opsduty-python/compare/0.2.3...0.2.4) (2025-07-07)
 
 
