@@ -21,7 +21,7 @@ class ExitError(click.UsageError):
         self, message: str, ctx: click.Context | None = None, exit_code: int = 1
     ) -> None:
         super().__init__(message, ctx)
-        self.exit_code = exit_code
+        self.exit_code = exit_code  # type: ignore[misc]
 
 
 @click.command(help="Send a heartbeat checkin to OpsDuty.")

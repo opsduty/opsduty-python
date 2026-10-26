@@ -388,7 +388,7 @@ def _create_heartbeats(
                 ),
             )
 
-            assert new_heartbeat
+            assert isinstance(new_heartbeat, HeartbeatSchema)
             assert new_heartbeat.id
 
             for state in heartbeat.states:

@@ -1,3 +1,4 @@
+import builtins
 import sys
 from zoneinfo import ZoneInfo
 
@@ -63,7 +64,8 @@ def list(ctx: click.Context, month: str, timezone: str, output: str) -> None:
         datetime_end=datetime_end,
     )
 
-    if not shifts:
+    if not isinstance(shifts, builtins.list):
+        ctx.fail("Could not fetch schedule shifts.")
         return
 
     document = ScheduleShifts.from_api_response(
