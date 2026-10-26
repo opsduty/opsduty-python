@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/opsduty/opsduty-python/compare/0.2.5...0.2.6) (2026-10-26)
+
+
+### Bug Fixes
+
+* Upgrade opsduty-client to 0.1.0 ([#32](https://github.com/opsduty/opsduty-python/issues/32)) ([5b0e10e](https://github.com/opsduty/opsduty-python/commit/5b0e10e721616ca6c887b88329473d09a58f705e))
+
 ## [0.2.5](https://github.com/opsduty/opsduty-python/compare/0.2.4...0.2.5) (2026-03-27)
 
 
