@@ -4,6 +4,7 @@ import click
 from opsduty_client.api.heartbeats import opsduty_api_v1_heartbeats_list_heartbeats
 from opsduty_client.client import AuthenticatedClient
 from opsduty_client.models.heartbeat_schema import HeartbeatSchema
+from opsduty_client.models.paged_heartbeat_schema import PagedHeartbeatSchema
 
 from opsduty_python.cli.utils import (
     FILE_FORMATS,
@@ -57,7 +58,7 @@ def fetch_heartbeats(
         page = opsduty_api_v1_heartbeats_list_heartbeats.sync(
             client=client, service=service_id, after=cursor
         )
-        assert page
+        assert isinstance(page, PagedHeartbeatSchema)
 
         has_next_page = page.page_info.has_next_page
         cursor = page.page_info.end_cursor if page.page_info.end_cursor else None
