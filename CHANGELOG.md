@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/opsduty/opsduty-python/compare/0.2.6...0.2.7) (2026-11-09)
+
+
+### Bug Fixes
+
+* Allow python-dateutil 4 ([#34](https://github.com/opsduty/opsduty-python/issues/34)) ([87de745](https://github.com/opsduty/opsduty-python/commit/87de745d92ebcd126a595433364934e7936607c8))
+
 ## [0.2.6](https://github.com/opsduty/opsduty-python/compare/0.2.5...0.2.6) (2026-10-26)
 
 
