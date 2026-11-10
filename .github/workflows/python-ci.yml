@@ -32,7 +32,11 @@ jobs:
         run: make lint-${{ matrix.target }}
 
   python-tests:
-    name: "Python tests: pytest"
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.13", "3.14", "3.15"]
+    name: "Python tests: pytest (${{ matrix.python-version }})"
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -42,6 +46,7 @@ jobs:
         uses: ./.github/actions/setup-python
         with:
           tool-versions-path: .tool-versions
+          python-version: ${{ matrix.python-version }}
 
       - name: Run pytest
         run: |
