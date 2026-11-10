@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/opsduty/opsduty-python/compare/0.2.7...0.3.0) (2026-11-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support Python 3.15 and drop Python 3.12 ([#36](https://github.com/opsduty/opsduty-python/issues/36))
+
+### Features
+
+* Support Python 3.15 and drop Python 3.12 ([#36](https://github.com/opsduty/opsduty-python/issues/36)) ([35e8cf8](https://github.com/opsduty/opsduty-python/commit/35e8cf8e3de3b6906c96d6a0f43969042f281cbc))
+
 ## [0.2.7](https://github.com/opsduty/opsduty-python/compare/0.2.6...0.2.7) (2026-11-09)
 
 
