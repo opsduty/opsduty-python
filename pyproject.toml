@@ -12,7 +12,7 @@ opsduty = 'opsduty_python.cli.__main__:opsduty'
 
 [tool.poetry.dependencies]
 opsduty-client = "^0.1.0"
-python = ">=3.11,<3.15"
+python = ">=3.13,<3.16"
 click = ">=8,<9"
 pydantic = ">=2,<3"
 pydantic-yaml = ">=1,<2"
